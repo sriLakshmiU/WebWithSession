@@ -3,7 +3,6 @@ package servlets;
 import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,18 +14,18 @@ import javax.servlet.http.HttpSession;
 import dbconfig.DbManager;
 
 /**
- * Servlet implementation class validationServlet
+ * Servlet implementation class InsertServlet
  */
-@WebServlet("/validationServlet")
-public class validationServlet extends HttpServlet {
+@WebServlet("/InsertServlet")
+public class InsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
     
-    public validationServlet() {
-        super();
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+       doPost(request, response);
     }
-
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		final DbManager dbmanager = new DbManager();
 		String query = "insert into user(FirstName,MiddleName,LastName,Gender,Address,City,State,Country,Phone,BankName,AccountNumber,SSN)"
@@ -57,22 +56,6 @@ public class validationServlet extends HttpServlet {
 		response.setContentType("text/html");
 		response.sendRedirect("jsp/success.jsp");
 		
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }

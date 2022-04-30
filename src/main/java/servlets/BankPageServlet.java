@@ -29,7 +29,7 @@ public class BankPageServlet extends HttpServlet {
 		session.setAttribute("accountNumber", accountNumber);
 		session.setAttribute("ssn", ssn);
 		
-		request.getRequestDispatcher("/validationServlet").forward(request, response);
+		request.getRequestDispatcher("/InsertServlet").forward(request, response);
 	}
 
 	
